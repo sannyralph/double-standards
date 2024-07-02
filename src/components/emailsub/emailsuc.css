@@ -1,0 +1,48 @@
+.email-subscription {
+    text-align: center;
+    margin: 2px 0 2px 0;
+    background-color: black;
+    padding: 200px 20px;
+  }
+
+  
+  .subtitle1 {
+    font-family: "Indie Flower", cursive;
+    font-weight: 400;
+    font-style: normal;  
+    font-size: 1.25rem;
+    margin-bottom: 20px;
+    color: white;
+    margin-top: 10px;
+    word-wrap: break-word;
+}
+
+  
+  .email-subscription form {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+  }
+  
+  .email-subscription input {
+    padding: 10px;
+    border: 2px solid  rgb(212 159 200);
+    border-radius: 5px;
+    outline: none;
+    width: 300px;
+  }
+  
+  .email-subscription button {
+    padding: 10px 20px;
+    background-color:  rgb(212 159 200);
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  .email-subscription button:hover {
+    background-color: rgb(123, 59, 109);
+  }
+
+ 
