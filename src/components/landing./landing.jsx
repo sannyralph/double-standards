@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import './landing.css';
-import logo from "./../../assets/Sporton-Logo.png";
+// import logo from "./../../assets/Sporton-Logo.png";
 
 function Countdown() {
   const calculateTimeLeft = () => {
