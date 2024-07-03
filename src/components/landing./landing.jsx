@@ -46,7 +46,7 @@ function Countdown() {
 
   return (
     <div className="container">
-      <img src={logo} alt="sporton-logo" className="logo" />
+      <h1>DOUBLE STANDARDS</h1>
       <div className="title">LAUNCHING SOON</div>
       <div className="timer">
         {timerComponents.length ? timerComponents : <span>Time's up!</span>}
