@@ -1,0 +1,53 @@
+name: Application CI/CD
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - id: github-repo
+      uses: ASzc/change-string-case-action@v1
+      with:
+        string: ${{github.event.repository.name}}
+
+    - name: Checkout repository
+      uses: actions/checkout@v2
+
+    - name: Use Node.js 16.x
+      uses: actions/setup-node@v1
+      with:
+        node-version: 16.x
+    
+    - name: Install dependencies
+      run: npm install
+
+    - name: Build
+      run: npm run build
+
+    - name: Build Docker
+      run: docker build --tag double_standards:latest -f Dockerfile target/classes
+
+    - name: Docker login
+      env:
+        DOCKER_USER: ${{secrets.DOCKER_USER}}
+        DOCKER_PASSWORD: ${{secrets.DOCKER_PASSWORD}}
+      run: docker login -u $DOCKER_USER -p $DOCKER_PASSWORD
+
+    - name: Stop all containers if existing
+      run: docker stop $(docker ps -aq) || true
+
+    - name: Remove old image if existing
+      run: docker rmi $(docker images ${{secrets.DOCKER_USER}}/${{steps.github-repo.outputs.lowercase}}:latest -q) -f || true
+
+    - name: Tag image
+      run: docker tag $(docker images double_standards:latest -q) ${{secrets.DOCKER_USER}}/${{steps.github-repo.outputs.lowercase}}:latest
+
+    - name: Push image
+      run: docker push ${{secrets.DOCKER_USER}}/${{steps.github-repo.outputs.lowercase}}
