@@ -3,12 +3,30 @@ import './emailsuc.css';
 
 function EmailSubscription() {
   const [email, setEmail] = useState('');
+  const [message, setMessage] = useState('');
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    // Handle email submission logic here
-    console.log('Email submitted:', email);
-    setEmail('');
+
+    try {
+      const response = await fetch('http://localhost:5000/api/subscribe', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ email }),
+      });
+
+      if (response.ok) {
+        setMessage('Thank you for subscribing!');
+        setEmail('');
+      } else {
+        setMessage('Failed to subscribe. Please try again.');
+      }
+    } catch (error) {
+      console.error('Error:', error);
+      setMessage('An error occurred. Please try again.');
+    }
   };
 
   return (
@@ -24,6 +42,7 @@ function EmailSubscription() {
         />
         <button type="submit">Subscribe</button>
       </form>
+      {message && <p className="message">{message}</p>}
     </div>
   );
 }
