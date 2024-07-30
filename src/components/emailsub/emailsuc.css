@@ -15,8 +15,7 @@
     color: rgb(0, 0, 0);
     margin-top: 10px;
     word-wrap: break-word;
-}
-
+}  
   
   .email-subscription form {
     display: flex;
@@ -26,7 +25,7 @@
   
   .email-subscription input {
     padding: 10px;
-    border: 2px solid  rgb(212 159 200);
+    border: 2px solid  rgb(0, 0, 0);
     border-radius: 5px;
     outline: none;
     width: 300px;
@@ -34,7 +33,7 @@
   
   .email-subscription button {
     padding: 10px 20px;
-    background-color:  rgb(212 159 200);
+    background-color:  rgb(0, 0, 0);
     color: white;
     border: none;
     border-radius: 5px;
@@ -42,7 +41,7 @@
   }
   
   .email-subscription button:hover {
-    background-color: rgb(123, 59, 109);
+    background-color: rgb(145, 145, 145);
   }
 
  

@@ -31,7 +31,8 @@ function EmailSubscription() {
 
   return (
     <div className="email-subscription">
-      <p className="subtitle1">Join the waitlist for our exclusive drops</p>
+      <h1>DOUBLE STANDARDS</h1>
+      <p className="subtitle1">Sign up to stay locked in</p>
       <form onSubmit={handleSubmit}>
         <input
           type="email"
